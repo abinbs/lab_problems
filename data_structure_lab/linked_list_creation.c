@@ -5,8 +5,8 @@ struct Node {
     int data;
     struct Node* link;
 }*head=NULL;
-void createList(int num);
-void Print();
+void createList(int num);        //function to create/update the list with values of num variable
+void Print();                    //function to display the final linked list
 int main()
 {
     int num=0,i,val=0;
