@@ -1,41 +1,46 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 struct Node {
     int data;
-    struct Node* link;
-}*head=NULL;
-
-void create_list(int num);
-void print();
+    struct Node *link;
+}*header,*ptr,*temp;
+void createList(int num);
+void Print();
 void add_key(int n,int key);
 
-int main(){
+void initialize(){
+    header=(struct Node*)malloc(sizeof(struct Node));
+    header->link=NULL;
+}
+
+
+int main()
+{
+    
+    
+    initialize();
     int num=0,i,val=0,n,key;
-    printf("Enter no of elements");
+    printf("Enter the number of items");
     scanf("%d",&val);
-    printf("Enter the values");
+    printf("Enter the numbers");
     for(i=0;i<val;i++){
         scanf("%d",&num);
-        create_list(num);
+        createList(num);
     }
-    print();
-    printf("Enter value to add");
+    Print();
+    printf("Enter the number");
     scanf("%d",&n);
-    printf("Enter the key value after which addition is performed");
+    printf("Enter the key after which insertion should take");
     scanf("%d",&key);
     add_key(n,key);
-    print();
+    Print();
+
 }
-void create_list(int num){
-    struct Node *ptr,*temp;
-    if(head==NULL){
-        head=(struct Node*)malloc(sizeof(struct Node));
-        head->data=num;
-        head->link=NULL;
-    }
-    else{
-        ptr=head;
+void createList(int num){
+
+        ptr=header;
         while(ptr->link!=NULL){
             ptr=ptr->link;
         }
@@ -43,21 +48,22 @@ void create_list(int num){
         temp->data=num;
         temp->link=NULL;
         ptr->link=temp;
-    }
+    
 }
-void print(){
-    struct Node *ptr;
-    ptr=head;
-    printf("List is: ");
-    while(ptr!=NULL){
-        printf(" %d",ptr->data);
+void Print(){
+    
+    ptr=header->link;
+    printf("List is :");
+    while(ptr!= NULL){
+        printf("  %d",ptr->data);
         ptr=ptr->link;
     }
+    printf("\n");
 }
 void add_key(int n,int key){
-    struct Node *ptr,*temp;
-    ptr=head;
-    if(ptr->link!=NULL && ptr->data!=key){
+    
+    ptr=header;
+    while(ptr->link!=NULL && ptr->data!=key){
         ptr=ptr->link;
     }
     if(ptr->link==NULL){
@@ -65,6 +71,10 @@ void add_key(int n,int key){
         exit(1);
     }
     temp=(struct Node*)malloc(sizeof(struct Node));
+    if(temp==NULL){
+        printf("Memory Insufficient ");
+        exit(0);
+    }
     temp->data=n;
     temp->link=ptr->link;
     ptr->link=temp;
