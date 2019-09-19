@@ -64,6 +64,10 @@ void add_beg(int n){
     printf("%d",n);
     ptr=header;
     temp=(struct Node*)malloc(sizeof(struct Node));
+    if(temp==NULL){
+        printf("Memory Underflow");
+        exit(0);
+    }
     temp->data=n;
     temp->link=header->link;
     header->link=temp;
