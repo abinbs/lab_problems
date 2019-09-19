@@ -1,39 +1,44 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 struct Node {
     int data;
-    struct Node* link;
-}*head=NULL;
-
-void create_list(int num);
-void print();
+    struct Node *link;
+}*header,*ptr,*temp;
+void createList(int num);
+void Print();
 void add_end(int n);
 
-int main(){
+void initialize(){
+    header=(struct Node*)malloc(sizeof(struct Node));
+    header->link=NULL;
+}
+
+
+int main()
+{
+    
+    
+    initialize();
     int num=0,i,val=0,n;
-    printf("Enter no of elements");
+    printf("Enter the number of items");
     scanf("%d",&val);
-    printf("Enter the values");
+    printf("Enter the numbers");
     for(i=0;i<val;i++){
         scanf("%d",&num);
-        create_list(num);
+        createList(num);
     }
-    print();
-    printf("Enter value to add");
+    Print();
+    printf("Enter the number");
     scanf("%d",&n);
     add_end(n);
-    print();
+    Print();
+
 }
-void create_list(int num){
-    struct Node *ptr,*temp;
-    if(head==NULL){
-        head=(struct Node*)malloc(sizeof(struct Node));
-        head->data=num;
-        head->link=NULL;
-    }
-    else{
-        ptr=head;
+void createList(int num){
+
+        ptr=header;
         while(ptr->link!=NULL){
             ptr=ptr->link;
         }
@@ -41,24 +46,29 @@ void create_list(int num){
         temp->data=num;
         temp->link=NULL;
         ptr->link=temp;
-    }
+    
 }
-void print(){
-    struct Node *ptr;
-    ptr=head;
-    printf("List is: ");
-    while(ptr!=NULL){
-        printf(" %d",ptr->data);
+void Print(){
+    
+    ptr=header->link;
+    printf("List is :");
+    while(ptr!= NULL){
+        printf("  %d",ptr->data);
         ptr=ptr->link;
     }
+    printf("\n");
 }
 void add_end(int n){
-    struct Node *ptr,*temp;
-    ptr=head;
+   
+    ptr=header;
     while(ptr->link!=NULL){
         ptr=ptr->link;
     }
     temp=(struct Node*)malloc(sizeof(struct Node));
+    if(temp==NULL){
+        printf("Memory underflow");
+        exit(0);
+    }
     temp->data=n;
     temp->link=NULL;
     ptr->link=temp;
