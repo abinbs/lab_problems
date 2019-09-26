@@ -8,7 +8,7 @@ struct Node {
 }*header,*ptr,*temp;
 void createList(int num);
 void Print();
-void add_end(int n);
+void add_end();
 
 void initialize(){
     header=(struct Node*)malloc(sizeof(struct Node));
@@ -19,35 +19,27 @@ void initialize(){
 int main()
 {
     
-    
+    int ch;
     initialize();
-    int num=0,i,val=0,n;
-    printf("Enter the number of items");
-    scanf("%d",&val);
-    printf("Enter the numbers");
-    for(i=0;i<val;i++){
-        scanf("%d",&num);
-        createList(num);
-    }
-    Print();
-    printf("Enter the number");
-    scanf("%d",&n);
-    add_end(n);
-    Print();
+while(1){
+	 printf("Enter the choices \n 1.add end\n2.Exit\n");
+	 scanf("%d",&ch);
 
-}
-void createList(int num){
+	 switch(ch){
+		case 1:
+		add_end();
 
-        ptr=header;
-        while(ptr->link!=NULL){
-            ptr=ptr->link;
-        }
-        temp=(struct Node*)malloc(sizeof(struct Node));
-        temp->data=num;
-        temp->link=NULL;
-        ptr->link=temp;
-    
-}
+		break;
+		case 2:
+		exit(1);
+		
+		
+		default: printf("Wrong Choice");
+	 }
+
+       }
+ 
+
 void Print(){
     
     ptr=header->link;
@@ -58,18 +50,30 @@ void Print(){
     }
     printf("\n");
 }
-void add_end(int n){
-   
-    ptr=header;
-    while(ptr->link!=NULL){
-        ptr=ptr->link;
-    }
-    temp=(struct Node*)malloc(sizeof(struct Node));
-    if(temp==NULL){
-        printf("Memory underflow");
-        exit(0);
-    }
-    temp->data=n;
-    temp->link=NULL;
-    ptr->link=temp;
+void add_end(){
+    char ch,c;
+    int n;
+	
+		ch='y';
+	while(ch=='y'){
+	    ptr=header;
+	printf("Enter the value to be added\n");
+	scanf("%d",&n);
+	temp=(struct node*)malloc(sizeof(struct node));
+	if(temp==NULL){
+		printf("Memory Insufficient");
+		exit(0);
+	}
+	while(ptr->link!=NULL){
+		ptr=ptr->link;
+	}
+	temp->data=n;
+	temp->link=NULL;
+	ptr->link=temp;
+	Print();
+	while((c = getchar()) != '\n' && c != EOF);
+	printf("\n do you want to continue (y/n)");
+	scanf("%c",&c);
+	ch=c;
+	}
 }
