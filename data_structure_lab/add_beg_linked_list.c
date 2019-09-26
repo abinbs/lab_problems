@@ -68,7 +68,7 @@ void add_beg(){
 	Print();
 	fflush(stdin);
     while((c = getchar()) != '\n' && c != EOF);
-	printf("do you want to continue (y/n)");
+	printf("\nDo you want to continue (y/n)");
 	scanf("%c",&c);
 	ch=c;
 	}
