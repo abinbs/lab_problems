@@ -6,7 +6,6 @@ struct Node {
     int data;
     struct Node *link;
 }*header,*ptr,*temp;
-void createList(int num);
 void Print();
 void add_end();
 
@@ -28,18 +27,15 @@ while(1){
 	 switch(ch){
 		case 1:
 		add_end();
-
 		break;
 		case 2:
 		exit(1);
-		
-		
 		default: printf("Wrong Choice");
 	 }
 
        }
  
-
+}
 void Print(){
     
     ptr=header->link;
@@ -59,7 +55,7 @@ void add_end(){
 	    ptr=header;
 	printf("Enter the value to be added\n");
 	scanf("%d",&n);
-	temp=(struct node*)malloc(sizeof(struct node));
+	temp=(struct node*)malloc(sizeof(struct Node));
 	if(temp==NULL){
 		printf("Memory Insufficient");
 		exit(0);
