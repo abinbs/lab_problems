@@ -6,9 +6,8 @@ struct Node {
     int data;
     struct Node *link;
 }*header,*ptr,*temp;
-void createList(int num);
 void Print();
-void add_key(int n,int key);
+void add_after_key();
 
 void initialize(){
     header=(struct Node*)malloc(sizeof(struct Node));
@@ -19,36 +18,23 @@ void initialize(){
 int main()
 {
     
-    
+    int ch;
     initialize();
-    int num=0,i,val=0,n,key;
-    printf("Enter the number of items");
-    scanf("%d",&val);
-    printf("Enter the numbers");
-    for(i=0;i<val;i++){
-        scanf("%d",&num);
-        createList(num);
-    }
-    Print();
-    printf("Enter the number");
-    scanf("%d",&n);
-    printf("Enter the key after which insertion should take");
-    scanf("%d",&key);
-    add_key(n,key);
-    Print();
+while(1){
+	 printf("Enter the choices \n 1.add after key\n2.Exit\n");
+	 scanf("%d",&ch);
 
-}
-void createList(int num){
+	 switch(ch){
+		case 1:
+		add_after_key();
+		break;
+		case 2:
+		exit(1);
+		default: printf("Wrong Choice");
+	 }
 
-        ptr=header;
-        while(ptr->link!=NULL){
-            ptr=ptr->link;
-        }
-        temp=(struct Node*)malloc(sizeof(struct Node));
-        temp->data=num;
-        temp->link=NULL;
-        ptr->link=temp;
-    
+       }
+ 
 }
 void Print(){
     
@@ -60,23 +46,40 @@ void Print(){
     }
     printf("\n");
 }
-void add_key(int n,int key){
-    
-    ptr=header;
-    while(ptr->link!=NULL && ptr->data!=key){
-        ptr=ptr->link;
-    }
-    if(ptr->link==NULL){
-        printf("No key value found; Unsuccesfull");
-        exit(1);
-    }
-    temp=(struct Node*)malloc(sizeof(struct Node));
-    if(temp==NULL){
-        printf("Memory Insufficient ");
-        exit(0);
-    }
-    temp->data=n;
-    temp->link=ptr->link;
-    ptr->link=temp;
-    
+void add_after_key(){
+    char ch,c;
+    int n,key;
+	
+	ch='y';
+	while(ch=='y'){
+	    ptr=header;
+	printf("Enter the value to be added\n");
+		scanf("%d",&n);
+		printf("Enter the key");
+		scanf("%d",&key);
+	temp=(struct node*)malloc(sizeof(struct Node));
+	if(temp==NULL){
+		printf("Memory Insufficient");
+		exit(0);
+	}
+	while(ptr->link!=NULL && ptr->data!=key){
+		 ptr=ptr->link;
+	}
+	if(ptr->data==key){
+	temp->data=n;
+	temp->link=ptr->link;
+	ptr->link=temp;
+	Print();
+	while((c = getchar()) != '\n' && c != EOF);
+	printf("\n do you want to continue (y/n)");
+	scanf("%c",&c);
+	ch=c;
+	}
+	else{
+	    printf("key not found");
+	    break;
+	}
+	}
+
 }
+
