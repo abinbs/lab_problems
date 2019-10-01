@@ -28,7 +28,7 @@ int main()
   printf("Sorted list in ascending order:\n");
 
   for (c = 0; c < n; c++)
-     printf("%d\n", array[c]);
+     printf("%d\n", array[c]); // this prints the sorted array in ascending order
 
   return 0;
 }
