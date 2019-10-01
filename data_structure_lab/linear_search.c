@@ -18,7 +18,7 @@ void main()
 
 	for(j=0;j<num;j++){
 
-		if(arr[j] == key)
+		if(arr[j] == key) // Checking whether the element is key or not
 		{
 			flag=1;
 			pos = j+1;
