@@ -64,7 +64,7 @@ void del_beg(){
         exit(0);
     }
     ptr1=ptr->link;
-    header->link=ptr->link;
+    header->link=ptr1; #same as ptr->link
     free(ptr);
     
 }
