@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
-void main(){
+int main(){
 	char str[20],nstring[20];
 	int len,i,j=0;;
 	clrscr();
@@ -17,6 +17,7 @@ void main(){
 	printf("String after reversal::: ");
 	puts(nstring);
 	getch();
+	return(0);
 
 
 }
