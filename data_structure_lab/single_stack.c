@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 void push(int *ar,int size);
-void pop(int *ar,int size);
+void pop(int size);
 void display(int *ar,int size);
 int a[100];
 int top=-1;
@@ -18,7 +18,7 @@ int main()
     switch(ch){
         case 1: push(a,size);
                 break;
-        case 2: pop(a,size);
+        case 2: pop(size);
                 break;
         case 3: display(a,size);
                 break;
@@ -42,7 +42,7 @@ void push(int *ar,int size){
         *(ar+top)=value;
     }
 }
-void pop(int *ar,int size){
+void pop(int size){
     if(top==-1){
         printf("Stack Empty");
     }
