@@ -1,3 +1,6 @@
+//Method 1.
+
+
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
@@ -101,4 +104,79 @@ void dis()
 }
 
 
+//Method 2
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node* link;
+}*top,*temp,*top1;
+
+void push();
+void pop();
+void display();
+
+int main(){
+    int ch;
+    while(1){
+        printf("Enter the choice\n1.push\n2.pop\n3.display\n4.exit");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:push();
+            break;
+            case 2:pop();
+            break;
+            case 3:display();
+            break;
+            case 4:exit(0);
+            default:printf("wrong choice");
+        }
+    }
+}
+void push(){
+    int value;
+    printf("Enter the value");
+    scanf("%d",&value);
+    if(top==NULL){
+        top =(struct node *)malloc(sizeof(struct node));
+        top->link=NULL;
+        top->data=value;
+    }
+    else{
+        temp=(struct node*)malloc(sizeof(struct node));
+        temp->link=top;
+        temp->data=value;
+        top=temp;
+    }
+}
+void pop(){
+    top1=top;
+    if(top1==NULL){
+        printf("stack underflow");
+        return;
+    }
+   
+    else{
+        top1=top1->link;
+        free(top);
+        top=top1;
+    }
+    
+}
+void display(){
+    top1=top;
+    if (top1 == NULL)
+    {
+        printf("Stack is empty");
+        return;
+    }
+ 
+    while (top1 != NULL)
+    {
+        printf("%d ", top1->data);
+        top1 = top1->link;
+    }
+ }
 
