@@ -1,3 +1,4 @@
 # lab_problems
 
-### All the lab problems done in my college years
+### Data Structure CS231 lab problems 
+
