@@ -13,7 +13,7 @@ void main()
     printf("enter substring:\n");
     gets(sub);
 
-    count1 = strlen(str);
+    count1 = strlen(str); //Counting length
     count2 = strlen(sub);
 
     for(i=0;i<=count1-count2;i++)
